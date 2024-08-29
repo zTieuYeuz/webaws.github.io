@@ -1,32 +1,32 @@
 <!DOCTYPE html>
 <html lang="en" class="js csstransforms3d">
-  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.131.0">
+    <meta name="generator" content="Hugo 0.133.1">
     <meta name="description" content="">
 <meta name="author" content="journeyoftheaverageguy@gmail.com">
 
     <link rel="icon" href="../images/favicon.png" type="image/png">
 
-    <title>Clean up resources :: AWS VPN Site to Site</title>
+    <title>Clean Up Resources :: AWS VPN Site to Site</title>
 
     
-    <link href="../css/nucleus.css?1724920758" rel="stylesheet">
-    <link href="../css/fontawesome-all.min.css?1724920758" rel="stylesheet">
-    <link href="../css/hybrid.css?1724920758" rel="stylesheet">
-    <link href="../css/featherlight.min.css?1724920758" rel="stylesheet">
-    <link href="../css/perfect-scrollbar.min.css?1724920758" rel="stylesheet">
-    <link href="../css/auto-complete.css?1724920758" rel="stylesheet">
-    <link href="../css/atom-one-dark-reasonable.css?1724920758" rel="stylesheet">
-    <link href="../css/theme.css?1724920758" rel="stylesheet">
-    <link href="../css/hugo-theme.css?1724920758" rel="stylesheet">
+    <link href="../css/nucleus.css?1724936952" rel="stylesheet">
+    <link href="../css/fontawesome-all.min.css?1724936952" rel="stylesheet">
+    <link href="../css/hybrid.css?1724936952" rel="stylesheet">
+    <link href="../css/featherlight.min.css?1724936952" rel="stylesheet">
+    <link href="../css/perfect-scrollbar.min.css?1724936952" rel="stylesheet">
+    <link href="../css/auto-complete.css?1724936952" rel="stylesheet">
+    <link href="../css/atom-one-dark-reasonable.css?1724936952" rel="stylesheet">
+    <link href="../css/theme.css?1724936952" rel="stylesheet">
+    <link href="../css/hugo-theme.css?1724936952" rel="stylesheet">
     
-    <link href="../css/theme-workshop.css?1724920758" rel="stylesheet">
+    <link href="../css/theme-workshop.css?1724936952" rel="stylesheet">
     
     
 
-    <script src="../js/jquery-3.3.1.min.js?1724920758"></script>
+    <script src="../js/jquery-3.3.1.min.js?1724936952"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -58,14 +58,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../js/lunr.min.js?1724920758"></script>
-<script type="text/javascript" src="../js/auto-complete.js?1724920758"></script>
+<script type="text/javascript" src="../js/lunr.min.js?1724936952"></script>
+<script type="text/javascript" src="../js/auto-complete.js?1724936952"></script>
 <script type="text/javascript">
     
-        var baseurl = "\/\/localhost:1313\/";
+        var baseurl = "\/";
     
 </script>
-<script type="text/javascript" src="../js/search.js?1724920758"></script>
+<script type="text/javascript" src="../js/search.js?1724936952"></script>
 
     
   </div>
@@ -767,13 +767,13 @@
  
   
     
-    <li data-nav-id="/5-cleanup/" title="Clean up resources" class="dd-item 
+    <li data-nav-id="/5-cleanup/" title="Clean Up Resources" class="dd-item 
         
         active
         
         ">
       <a href="../5-cleanup/">
-           <b> 5 </b> Clean up resources
+           <b> 5 </b> Clean Up Resources
           
             <i class="fas fa-check read-icon"></i>
           
@@ -820,7 +820,7 @@
                   
                     
                     
-                      <option id="en" value="//localhost:1313/5-cleanup/" selected>English</option>
+                      <option id="en" value="/5-cleanup/" selected>English</option>
                     
                   
               
@@ -834,7 +834,7 @@
                   
                     
                     
-                      <option id="vi" value="//localhost:1313/vi/5-cleanup/">Tiếng Việt</option>
+                      <option id="vi" value="/vi/5-cleanup/">Tiếng Việt</option>
                     
                   
               
@@ -922,7 +922,7 @@
             
           
           
-            <a href='../'></a> > Clean up resources
+            <a href='../'></a> > Clean Up Resources
           
         
           
@@ -933,7 +933,11 @@
                 
                     <div class="progress">
     <div class="wrapper">
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#8"></a></li>
+  </ul>
+</nav>
     </div>
 </div>
 
@@ -949,7 +953,7 @@
           
             <h1>
               
-              Clean up resources
+              Clean Up Resources
             </h1>
           
 
@@ -957,40 +961,44 @@
 
 
 
-	<p>We will proceed with the following steps to delete the resources we created in this practice.</p>
+	<p>We will follow these steps to sequentially delete the resources we created in this exercise.
+
+<div class="notices info" ><p>If you deployed VPC, EC2, ElasticIP, NATGW using Terraform in section 2.6, you can delete them using Terraform without having to delete them manually. Refer to <a href="../5-cleanup/#8">Step 8</a>.</p>
+</div>
+</p>
 <ol>
 <li>
-<p>Delete EC2 instances. Access the <a href="https://console.aws.amazon.com/ec2/v2/home">EC2 service management interface</a></p>
+<p>Delete EC2 instances. Go to the <a href="https://console.aws.amazon.com/ec2/v2/home">EC2 service management interface</a></p>
 <ul>
 <li>Click <strong>Instances</strong>.</li>
-<li>Click to select both <strong>EC2_Public</strong> and <strong>EC2_Private</strong> instances.</li>
+<li>Select both <strong>EC2_Public</strong> and <strong>EC2_Private</strong> instances.</li>
 <li>Click <strong>Instance state</strong>.</li>
-<li>Click <strong>Terminate instance</strong>, then click <strong>Terminate(Delete)instance</strong> to confirm.
+<li>Click <strong>Terminate instance</strong>, then click <strong>Terminate(Delete) instance</strong> to confirm.
 <img alt="clean" src="../images/5.cleanup/001-clean.png"></li>
-<li>Click confirm <strong>Terminate(Delete)instance</strong>
+<li>Click to confirm <strong>Terminate(Delete) instance</strong>
 <img alt="clean" src="../images/5.cleanup/002-clean.png"></li>
 </ul>
 </li>
 <li>
 <p>NAT Gateway</p>
 <ul>
-<li>Delete NAT Gateway and Elastic IP Address. AWS will charge for unused EIP, so you need to check carefully to avoid unwanted charges.</li>
-<li>Access the Amazon VPC console.</li>
-<li>On the left navigation bar, click <strong>NAT Gateway</strong>.</li>
+<li>Delete the NAT Gateway and Elastic IP Address. AWS charges for unused EIPs, so you need to check carefully to avoid unwanted costs.</li>
+<li>Go to the Amazon VPC console.</li>
+<li>In the left navigation pane, click <strong>NAT Gateway</strong>.</li>
 <li>Select <strong>NAT Gateway</strong>.</li>
 <li>Click <strong>Action</strong>.</li>
 <li>Click Delete <strong>NAT Gateway</strong>.
 <img alt="clean" src="../images/5.cleanup/003-clean.png"></li>
 <li>Type delete.</li>
-<li>Click Delete to confirm the deletion of NAT Gateway
+<li>Click Delete to confirm the deletion of the NAT Gateway
 <img alt="clean" src="../images/5.cleanup/004-clean.png"></li>
 </ul>
 </li>
 <li>
 <p>Elastic IP Address</p>
 <ul>
-<li>Continue to delete <strong>Elastic IP Address</strong>.</li>
-<li>On the left navigation bar, click <strong>Elastic IP</strong>.</li>
+<li>Continue to delete the <strong>Elastic IP Address</strong>.</li>
+<li>In the left navigation pane, click <strong>Elastic IP</strong>.</li>
 <li>Select the Elastic IP Address we created.</li>
 <li>Click <strong>Actions</strong></li>
 <li>Click <strong>Release Elastic IP Address</strong></li>
@@ -1008,12 +1016,12 @@
 <li>Select <strong>Delete VPN connection</strong>
 <img alt="clean" src="../images/5.cleanup/007-clean.png"></li>
 <li>Type <strong>delete</strong></li>
-<li>Click <strong>Delete</strong> to confirm the deletion of VPN
+<li>Click <strong>Delete</strong> to confirm the deletion of the VPN
 <img alt="clean" src="../images/5.cleanup/008-clean.png"></li>
 </ul>
 </li>
 <li>
-<p>Delete Virtual Private Gateway(VPG).</p>
+<p>Delete Virtual Private Gateway (VPG).</p>
 <ul>
 <li>In the VPC interface</li>
 <li>Select <strong>Virtual private gateways</strong></li>
@@ -1030,7 +1038,7 @@
 </ul>
 </li>
 <li>
-<p>Delete Customer Gateway(CG).</p>
+<p>Delete Customer Gateway (CG).</p>
 <ul>
 <li>In the VPC interface</li>
 <li>Select <strong>Customer gateways</strong> on the left</li>
@@ -1048,6 +1056,17 @@
 <li>Select <strong>Actions</strong></li>
 <li>Select <strong>Delete VPC</strong>
 <img alt="clean" src="../images/5.cleanup/015-clean.png"></li>
+</ul>
+</li>
+</ol>
+<h2 id="8"></h2>
+<ol start="8">
+<li>Delete resources in steps 1, 2, 3, 7
+<ul>
+<li>Enter the command <code>terraform destroy -auto-approve</code>. All resources will be deleted after 3 minutes
+<img alt="clean" src="../images/5.cleanup/016-clean.png"></li>
+<li>Complete the deletion of all resources
+<img alt="clean" src="../images/5.cleanup/017-clean.png"></li>
 </ul>
 </li>
 </ol>
@@ -1504,19 +1523,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../js/clipboard.min.js?1724920758"></script>
-    <script src="../js/perfect-scrollbar.min.js?1724920758"></script>
-    <script src="../js/perfect-scrollbar.jquery.min.js?1724920758"></script>
-    <script src="../js/jquery.sticky.js?1724920758"></script>
-    <script src="../js/featherlight.min.js?1724920758"></script>
-    <script src="../js/highlight.pack.js?1724920758"></script>
+    <script src="../js/clipboard.min.js?1724936952"></script>
+    <script src="../js/perfect-scrollbar.min.js?1724936952"></script>
+    <script src="../js/perfect-scrollbar.jquery.min.js?1724936952"></script>
+    <script src="../js/jquery.sticky.js?1724936952"></script>
+    <script src="../js/featherlight.min.js?1724936952"></script>
+    <script src="../js/highlight.pack.js?1724936952"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../js/modernizr.custom-3.6.0.js?1724920758"></script>
-    <script src="../js/learn.js?1724920758"></script>
-    <script src="../js/hugo-learn.js?1724920758"></script>
+    <script src="../js/modernizr.custom-3.6.0.js?1724936952"></script>
+    <script src="../js/learn.js?1724936952"></script>
+    <script src="../js/hugo-learn.js?1724936952"></script>
 
-    <link href="../mermaid/mermaid.css?1724920758" rel="stylesheet" />
-    <script src="../mermaid/mermaid.js?1724920758"></script>
+    <link href="../mermaid/mermaid.css?1724936952" rel="stylesheet" />
+    <script src="../mermaid/mermaid.js?1724936952"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>
